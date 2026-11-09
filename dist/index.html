@@ -3,127 +3,407 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Roomie is a verified rental and roommate matching marketplace for Metro Manila." />
-    <meta name="theme-color" content="#0a5c55" />
-    <title>Roomie | Find your place and your people</title>
+    <meta name="description" content="Roomie Manila product requirements document, aligned to user testing and the implemented tenant and host MVPs." />
+    <meta name="theme-color" content="#0b2d3d" />
+    <title>Roomie Manila | Product Requirements Document</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <a class="skip-link" href="#main">Skip to listings</a>
+    <a class="skip-link" href="#document">Skip to document</a>
 
-    <header class="topbar">
-      <a class="brand" href="#" aria-label="Roomie home">
-        <span class="brand-mark">R</span>
-        <span>roomie<small>Manila rentals</small></span>
+    <header class="toolbar">
+      <a class="wordmark" href="#cover" aria-label="Roomie Manila PRD cover">
+        <span class="wordmark-icon">R</span>
+        <span><strong>Roomie Manila</strong><small>Product Requirements Document</small></span>
       </a>
-      <nav class="desktop-nav" aria-label="Primary navigation">
-        <button class="nav-link active" data-view="explore">Explore</button>
-        <button class="nav-link" data-view="saved">Saved <span id="saved-count">0</span></button>
-        <button class="nav-link" data-view="inbox">Inbox <span class="notification-dot">2</span></button>
-      </nav>
-      <div class="topbar-actions">
-        <button class="host-switch" id="host-switch">Host dashboard</button>
-        <button class="account-button" id="account-button" aria-label="Open account and verification">
-          <span class="avatar">TJ</span>
-          <span class="account-copy"><b>TJ Cha</b><small id="account-status">Verify account</small></span>
-        </button>
+      <div class="toolbar-actions">
+        <a href="https://tjcha1213.github.io/mvproomie/" target="_blank" rel="noopener">Open MVP hub</a>
+        <button type="button" onclick="window.print()">Print</button>
+        <a class="download" href="./Roomie_Manila_Revised_PRD.pdf" download>Download PDF</a>
       </div>
     </header>
 
-    <main id="main">
-      <section id="tenant-app">
-        <div class="hero">
-          <div class="hero-copy">
-            <p class="eyebrow">Metro Manila rentals, made personal</p>
-            <h1>Find a place—and people—you can trust.</h1>
-            <p>Compare verified homes, understand the real move-in cost, and match with a living setup that fits you.</p>
+    <div class="workspace">
+      <aside class="toc" aria-label="Document sections">
+        <p class="toc-label">Document contents</p>
+        <a href="#cover"><span>00</span>Cover</a>
+        <a href="#summary"><span>01</span>Executive summary</a>
+        <a href="#research"><span>02</span>Research evidence</a>
+        <a href="#definition"><span>03</span>Product definition</a>
+        <a href="#tenant-mvps"><span>04</span>Tenant MVPs</a>
+        <a href="#tenant-flow"><span>05</span>Tenant requirements</a>
+        <a href="#host-mvps"><span>06</span>Host MVPs</a>
+        <a href="#trust"><span>07</span>Trust and listing quality</a>
+        <a href="#metrics"><span>08</span>Metrics and validation</a>
+        <a href="#roadmap"><span>09</span>Roadmap and risks</a>
+        <a href="#appendix"><span>A</span>Traceability</a>
+      </aside>
+
+      <main class="document" id="document">
+        <article class="paper cover-page" id="cover">
+          <div class="cover-rule"></div>
+          <div class="cover-brand">
+            <span class="cover-logo">R</span>
+            <span>Roomie Manila</span>
           </div>
-          <form class="search-box" id="search-form">
-            <label>
-              <span>Where do you need to be?</span>
-              <input id="search-input" type="search" placeholder="University, district, or neighborhood" autocomplete="off" />
-            </label>
-            <label>
-              <span>Move-in</span>
-              <select id="move-in"><option>Anytime</option><option>Within 2 weeks</option><option>Within 30 days</option><option>Next semester</option></select>
-            </label>
-            <button type="submit">Search homes</button>
-          </form>
-          <div class="quick-links" aria-label="Popular areas">
-            <span>Popular:</span>
-            <button data-query="Katipunan">Katipunan</button>
-            <button data-query="Taft">Taft</button>
-            <button data-query="Sampaloc">University Belt</button>
-            <button data-query="BGC">BGC</button>
-            <button data-query="Makati">Makati</button>
+          <div class="cover-copy">
+            <p class="kicker">Product Requirements Document</p>
+            <h1>User-testing-aligned<br />MVP specification</h1>
+            <p class="cover-subtitle">A focused product definition for a trusted Metro Manila rental marketplace, grounded in the actual tenant and host prototypes.</p>
+            <div class="cover-statement">Make Metro Manila's fragmented rental market structured, transparent, and trustworthy - so a renter can confidently contact a host and schedule a viewing.</div>
           </div>
-        </div>
+          <table class="meta-table">
+            <tbody>
+              <tr><th>Authors</th><td>Tae Jun TJ Cha and Takashi Ban</td></tr>
+              <tr><th>Revision</th><td>2.1 - prototype-integrated web edition</td></tr>
+              <tr><th>Date</th><td>November 2026</td></tr>
+              <tr><th>Market</th><td>Metro Manila rental housing</td></tr>
+              <tr><th>Primary users</th><td>Renters and hosts/property managers</td></tr>
+              <tr><th>Prototype source</th><td><a href="https://github.com/tjcha1213/mvproomie" target="_blank" rel="noopener">tjcha1213/mvproomie</a></td></tr>
+            </tbody>
+          </table>
+          <div class="cover-evidence">
+            <strong>Evidence base</strong>
+            <p>Original March 2026 PRD, August 2026 user-testing readout, screen-recording analysis, and the six implemented Roomie prototype routes.</p>
+          </div>
+          <footer class="page-footer"><span>ROOMIE MANILA</span><span>PRD 2.1</span></footer>
+        </article>
 
-        <section class="trust-strip" aria-label="Roomie trust features">
-          <div><span>✓</span><p><b>Verified people</b><small>GCash KYC partner pathway</small></p></div>
-          <div><span>₱</span><p><b>True move-in cost</b><small>Fees and deposits up front</small></p></div>
-          <div><span>◎</span><p><b>Compatibility match</b><small>Living preferences, explained</small></p></div>
-          <div><span>⌖</span><p><b>Local context</b><small>Commute and neighborhood fit</small></p></div>
-        </section>
+        <article class="paper" id="summary">
+          <header class="page-header"><span>ROOMIE MANILA - PRODUCT REQUIREMENTS</span><span>USER-TESTING-ALIGNED MVP</span></header>
+          <div class="section-marker">SECTION 01</div>
+          <h2>Executive summary</h2>
+          <p class="section-deck">A narrower, evidence-led product definition based on what users valued and what the prototypes actually demonstrate.</p>
+          <div class="callout"><strong>Trust is the product.</strong> Search is the entry point. A confident contact or viewing request is the first meaningful outcome.</div>
 
-        <section class="marketplace" id="explore-view">
-          <aside class="filters" id="filters">
-            <div class="filter-heading"><div><p class="eyebrow">Refine results</p><h2>Find your fit</h2></div><button id="clear-filters">Clear</button></div>
-            <label class="verified-toggle"><input type="checkbox" id="verified-filter" /><span></span><p><b>GCash-verified only</b><small>Show verified hosts and renters</small></p></label>
-            <fieldset><legend>Monthly budget</legend><div class="budget-row"><span>₱2,000</span><span id="budget-output">₱18,000</span></div><input id="budget-range" type="range" min="2500" max="25000" step="500" value="18000" /></fieldset>
-            <fieldset><legend>Space type</legend><div class="choice-grid" id="type-filters"><button class="selected" data-type="All">All</button><button data-type="Bedspace">Bedspace</button><button data-type="Studio">Studio</button><button data-type="Apartment">Apartment</button></div></fieldset>
-            <fieldset><legend>Living preferences</legend><label class="check-row"><input type="checkbox" data-amenity="Wi-Fi" /> Wi-Fi included</label><label class="check-row"><input type="checkbox" data-amenity="Pet-friendly" /> Pet-friendly</label><label class="check-row"><input type="checkbox" data-amenity="Aircon" /> Air conditioning</label><label class="check-row"><input type="checkbox" data-amenity="Study area" /> Study area</label></fieldset>
-            <div class="match-profile"><span>86%</span><div><b>Your match profile</b><small>Quiet nights · Hybrid work · No smoking</small></div><button id="edit-match">Edit</button></div>
-          </aside>
+          <h3>What changed from the prior PRD</h3>
+          <ul class="document-list">
+            <li>Replaced the broad BahayTrust real-estate infrastructure concept with a focused Metro Manila rental marketplace.</li>
+            <li>Reduced the primary audience to renters and hosts/property managers.</li>
+            <li>Made verified identity/listings, transparent costs, current photos, reviews, and explainable Roomie Scores the P0 trust layer.</li>
+            <li>Made occupancy, roommate context, lease terms, fees, and commute/neighborhood context required listing information.</li>
+            <li>Selected tenant MVP2's split map/list interaction as the usability baseline while retaining the strongest patterns from MVP1 and MVP3.</li>
+            <li>Moved live payments, escrow, ancillary services, AI valuation, investor analytics, and sales workflows behind the core rental journey.</li>
+          </ul>
 
-          <div class="results-area">
-            <div class="results-toolbar">
-              <div><p id="result-count">6 verified-friendly homes</p><small>Match scores use your budget, location, and living preferences.</small></div>
-              <div class="toolbar-controls"><button id="map-toggle">Hide map</button><select id="sort-select" aria-label="Sort listings"><option value="match">Best match</option><option value="price-low">Price: low to high</option><option value="price-high">Price: high to low</option><option value="newest">Newest</option></select></div>
+          <h3>Release definition</h3>
+          <div class="three-column-table">
+            <section><b>Now: validate</b><p>Verification, complete listings, map/list discovery, reviews, explainable score, messaging, viewing requests, and reporting.</p></section>
+            <section><b>Next: transact</b><p>Documents, contracts, payment tracking, receipts, and an optional regulated escrow pilot.</p></section>
+            <section><b>Later: expand</b><p>Ancillary services, roommate matching, deeper analytics, and institutional integrations.</p></section>
+          </div>
+
+          <h3>Prototype status</h3>
+          <p>The current MVPs are interactive React front-end prototypes with mock state and data. They validate interaction patterns; they do not yet prove production authentication, verification, moderation, payments, persistence, privacy controls, or marketplace operations.</p>
+          <footer class="page-footer"><span>November 2026</span><span>Page 2</span></footer>
+        </article>
+
+        <article class="paper" id="research">
+          <header class="page-header"><span>ROOMIE MANILA - PRODUCT REQUIREMENTS</span><span>RESEARCH EVIDENCE</span></header>
+          <div class="section-marker">SECTION 02</div>
+          <h2>What the research says</h2>
+          <p class="section-deck">The findings support a clear sequence: establish trust, improve decision quality, then add transaction tools.</p>
+          <div class="stat-grid">
+            <div><strong>74.2</strong><span>Average SUS</span><small>15 participants</small></div>
+            <div><strong>80.6</strong><span>Tenant MVP2 SUS</span><small>n=4; directional</small></div>
+            <div><strong>60%</strong><span>Trust ranked first</span><small>9 of 15 participants</small></div>
+            <div><strong>3.73/4</strong><span>Recommendation</span><small>Average rating</small></div>
+          </div>
+
+          <table class="prd-table evidence-table">
+            <thead><tr><th>Evidence</th><th>Interpretation</th><th>Requirement consequence</th></tr></thead>
+            <tbody>
+              <tr><td>Trust and Safety ranked #1 by 9 of 15.</td><td>Trust is the core value proposition, not a support feature.</td><td>P0 verification, reviews, photo integrity, transparent pricing, score explanation, and reporting.</td></tr>
+              <tr><td>14 of 15 found listing details broadly clear.</td><td>The visual foundation works, but decision-critical facts are missing.</td><td>Add occupancy, roommates, lease, fees, availability, building facts, and documents.</td></tr>
+              <tr><td>MVP2 SUS 80.6; MVP1 and MVP3 70.6.</td><td>The split map/list pattern is the strongest directional starting point.</td><td>Use MVP2 as the primary discovery baseline; preserve useful patterns from MVP1 and MVP3.</td></tr>
+              <tr><td>Facebook is the main alternative.</td><td>Roomie cannot initially win on inventory size; it can win on structure and credibility.</td><td>Standardized listings, visible verification, local context, and clear safety signals.</td></tr>
+              <tr><td>Payments were valued, particularly by hosts.</td><td>Transaction tools have pull but depend on trusted people and properties.</td><td>Sequence Discovery -> Verification -> Communication -> Documentation -> Payments.</td></tr>
+              <tr><td>Recordings exposed sorting and navigation gaps.</td><td>Small flow breaks undermine confidence.</td><td>Add price/relevance sort and preserve the originating listing when entering or leaving chat.</td></tr>
+            </tbody>
+          </table>
+          <div class="note"><b>Research caveat.</b> This 15-participant sample supports prioritization and hypothesis formation, not population estimates. Each tenant MVP had four testers.</div>
+          <footer class="page-footer"><span>Roomie Manila User Testing - August 2026</span><span>Page 3</span></footer>
+        </article>
+
+        <article class="paper" id="definition">
+          <header class="page-header"><span>ROOMIE MANILA - PRODUCT REQUIREMENTS</span><span>PRODUCT DEFINITION</span></header>
+          <div class="section-marker">SECTION 03</div>
+          <h2>Product definition</h2>
+          <p class="section-deck">Who Roomie serves, what problem it solves, and where the next MVP stops.</p>
+
+          <h3>Problem statement</h3>
+          <p>Metro Manila renters often search through fragmented, inconsistently structured listings where host identity, price, occupancy, photos, lease terms, and location context are difficult to verify. Hosts manage listings, inquiries, viewings, tenants, and payments across disconnected tools.</p>
+
+          <h3>Product vision</h3>
+          <div class="callout compact">Roomie is the trusted rental layer for Metro Manila: a structured marketplace where credible people and properties are easy to understand, compare, contact, and manage.</div>
+
+          <h3>Primary jobs to be done</h3>
+          <table class="prd-table">
+            <thead><tr><th>User</th><th>Job</th><th>Successful outcome</th></tr></thead>
+            <tbody>
+              <tr><td><b>Renter</b></td><td>Find realistic options near daily destinations and understand who and what can be trusted.</td><td>Confidently contact a verified host or request a viewing with full cost and living situation understood.</td></tr>
+              <tr><td><b>Host / manager</b></td><td>Present an available unit credibly and manage qualified interest without fragmented tools.</td><td>Publish a complete verified listing, respond to inquiries, schedule viewings, and maintain a status trail.</td></tr>
+            </tbody>
+          </table>
+
+          <h3>Experience architecture</h3>
+          <div class="journey-row">
+            <span><b>1</b>Discover</span><i>→</i><span><b>2</b>Filter</span><i>→</i><span><b>3</b>Inspect</span><i>→</i><span><b>4</b>Trust</span><i>→</i><span><b>5</b>Understand place</span><i>→</i><span><b>6</b>Contact</span>
+          </div>
+
+          <h3>Scope boundary</h3>
+          <div class="scope-grid">
+            <div class="scope-card p0"><span>P0</span><b>Trust and contact</b><p>Identity/listing verification, complete facts, reviews, score explanation, chat, viewings, and reporting.</p></div>
+            <div class="scope-card p1"><span>P1</span><b>Decision quality</b><p>Sort, commute, transit, neighborhood context, saved search, notifications, and listing quality meter.</p></div>
+            <div class="scope-card p2"><span>P2</span><b>After trust</b><p>Documents, payments, receipts, escrow pilot, roommate matching, and services.</p></div>
+          </div>
+          <footer class="page-footer"><span>Product definition and scope</span><span>Page 4</span></footer>
+        </article>
+
+        <article class="paper prototype-page" id="tenant-mvps">
+          <header class="page-header"><span>ROOMIE MANILA - PRODUCT REQUIREMENTS</span><span>ACTUAL TENANT MVPS</span></header>
+          <div class="section-marker">SECTION 04</div>
+          <h2>Tenant prototype portfolio</h2>
+          <p class="section-deck">The next integrated tenant experience is assembled from the strongest tested interaction patterns, not invented independently of the MVPs.</p>
+
+          <div class="prototype-grid three">
+            <figure class="prototype-figure">
+              <div class="phone-frame"><img loading="lazy" src="./assets/tenant-mvp1-home.png" alt="Actual Tenant MVP1 map-first home screen" /></div>
+              <figcaption><span>MVP 1</span><strong>Map-first discovery</strong><p>Full map, synchronized price pins, and a horizontal listing carousel.</p><a href="https://tjcha1213.github.io/mvproomie/mvp1/" target="_blank" rel="noopener">Open prototype ↗</a></figcaption>
+            </figure>
+            <figure class="prototype-figure selected">
+              <div class="recommendation">USABILITY BASELINE</div>
+              <div class="phone-frame"><img loading="lazy" src="./assets/tenant-mvp2-home.png" alt="Actual Tenant MVP2 split map and listing screen" /></div>
+              <figcaption><span>MVP 2</span><strong>Split map and list</strong><p>Draggable listing sheet, embedded unit preview, and direct viewing request.</p><a href="https://tjcha1213.github.io/mvproomie/mvp2/" target="_blank" rel="noopener">Open prototype ↗</a></figcaption>
+            </figure>
+            <figure class="prototype-figure">
+              <div class="phone-frame"><img loading="lazy" src="./assets/tenant-mvp3-home.png" alt="Actual Tenant MVP3 curated discovery screen" /></div>
+              <figcaption><span>MVP 3</span><strong>Curated discovery</strong><p>Neighborhood, budget, and size rails for exploratory browsing.</p><a href="https://tjcha1213.github.io/mvproomie/mvp3/" target="_blank" rel="noopener">Open prototype ↗</a></figcaption>
+            </figure>
+          </div>
+
+          <table class="prd-table compact-table">
+            <thead><tr><th>Prototype</th><th>Keep</th><th>Change for next iteration</th></tr></thead>
+            <tbody>
+              <tr><td><b>MVP1</b></td><td>Spatial scanning and synchronized pin/card selection.</td><td>Make map emphasis optional rather than the only discovery mode.</td></tr>
+              <tr><td><b>MVP2</b></td><td>Primary split map/list interaction and visible listing actions.</td><td>Add decision-critical facts, sorting, trust explanation, and stable navigation context.</td></tr>
+              <tr><td><b>MVP3</b></td><td>Curated neighborhood and budget rails.</td><td>Use as secondary discovery modules, not the primary information architecture.</td></tr>
+            </tbody>
+          </table>
+          <footer class="page-footer"><span>Source: /mvproomie tenant routes</span><span>Page 5</span></footer>
+        </article>
+
+        <article class="paper" id="tenant-flow">
+          <header class="page-header"><span>ROOMIE MANILA - PRODUCT REQUIREMENTS</span><span>TENANT FLOW AND REQUIREMENTS</span></header>
+          <div class="section-marker">SECTION 05</div>
+          <h2>From listing inspection to confident contact</h2>
+          <p class="section-deck">The implemented listing-detail pattern is strong visually; the next MVP must add the information and trust evidence that users requested.</p>
+
+          <div class="detail-layout">
+            <figure class="prototype-figure detail-shot">
+              <div class="phone-frame"><img loading="lazy" src="./assets/tenant-mvp2-detail.png" alt="Actual Tenant MVP2 listing detail screen" /></div>
+              <figcaption><span>ACTUAL SCREEN</span><strong>MVP2 listing detail</strong><p>Gallery, unit facts, verified-host treatment, messaging, calling, and location context.</p></figcaption>
+            </figure>
+            <div>
+              <h3>Required listing expansion</h3>
+              <table class="prd-table narrow-table">
+                <tbody>
+                  <tr><th>Occupancy</th><td>Capacity, current occupants, available slots, private/shared room, roommate count, guest/pet/smoking rules.</td></tr>
+                  <tr><th>True cost</th><td>Base rent, association dues, utilities, recurring fees, deposits, advance rent, and estimated move-in total.</td></tr>
+                  <tr><th>Lease</th><td>Duration, renewal, termination, required documents, payment schedule, house rules, and contract availability.</td></tr>
+                  <tr><th>Property</th><td>Building name/age, floor, size, rooms, furnishing, accessibility, security, power/water reliability.</td></tr>
+                  <tr><th>Location</th><td>Commute destinations, transit, daily needs, traffic/flood notes, and source timestamps.</td></tr>
+                  <tr><th>Trust</th><td>Host role, evidence checked, verification date, photo freshness, reviews, and score components.</td></tr>
+                </tbody>
+              </table>
+              <div class="note"><b>Conversion rule.</b> Show recurring monthly cost and estimated move-in cost before the primary contact/viewing action.</div>
             </div>
-            <div class="discovery-layout">
-              <div class="map-panel" id="map-panel" aria-label="Map of Metro Manila rental listings">
-                <div class="map-label">Metro Manila</div>
-                <div class="road r1"></div><div class="road r2"></div><div class="road r3"></div><div class="road r4"></div>
-                <span class="district d1">Quezon City</span><span class="district d2">Manila</span><span class="district d3">Makati</span><span class="district d4">BGC</span>
-                <div id="map-pins"></div>
-                <div class="map-key"><span></span> Verified listing</div>
-              </div>
-              <div class="listing-grid" id="listing-grid"></div>
-            </div>
           </div>
-        </section>
 
-        <section class="empty-view hidden" id="saved-view"><div class="section-title"><p class="eyebrow">Your shortlist</p><h2>Saved homes</h2><p>Compare your favorites without losing the listing context.</p></div><div class="listing-grid saved-grid" id="saved-grid"></div><div class="empty-state" id="saved-empty"><span>♡</span><h3>No saved homes yet</h3><p>Tap the heart on a listing to build your shortlist.</p><button data-view="explore">Explore homes</button></div></section>
+          <h3>Core tenant requirements</h3>
+          <table class="prd-table requirements-table">
+            <thead><tr><th>ID</th><th>Capability</th><th>Acceptance requirement</th></tr></thead>
+            <tbody>
+              <tr><td>DS-01</td><td>Search and filter</td><td>Budget, type, furnishing, Wi-Fi, occupancy, availability, lease length, verified-only, and commute threshold.</td></tr>
+              <tr><td>DS-02</td><td>Sort</td><td>Price, relevance, newest, commute, and trust evidence; relevance explained at a high level.</td></tr>
+              <tr><td>DS-03</td><td>Map/list sync</td><td>Selected pin and card remain synchronized; search, filters, scroll, and map position persist.</td></tr>
+              <tr><td>CM-01</td><td>Listing-linked chat</td><td>Every thread retains listing snapshot, price/status, and a return-to-listing action.</td></tr>
+              <tr><td>CM-02</td><td>Viewing request</td><td>Renter proposes times; host confirms or reschedules; both see status, reminders, and history.</td></tr>
+            </tbody>
+          </table>
+          <footer class="page-footer"><span>Tenant requirements</span><span>Page 6</span></footer>
+        </article>
 
-        <section class="empty-view hidden" id="inbox-view"><div class="section-title"><p class="eyebrow">Listing-linked conversations</p><h2>Inbox</h2><p>Every conversation keeps the home, price, and viewing status attached.</p></div><div class="inbox-layout"><div class="thread-list"><button class="thread active"><span class="thread-avatar">AM</span><div><b>Ana Mendoza</b><small>Cozy studio near Ateneo</small><p>Saturday at 2 PM works. I’ll send the viewing details.</p></div><time>10:42</time></button><button class="thread"><span class="thread-avatar">RM</span><div><b>Roomie Match</b><small>Compatibility update</small><p>You have a new 91% roommate match in Taft.</p></div><time>Yesterday</time></button></div><div class="conversation"><div class="conversation-head"><div><b>Cozy studio near Ateneo</b><small>₱8,500/month · Viewing requested</small></div><button class="verified-mini">✓ Verified host</button></div><div class="messages"><p class="received">Hi TJ! The studio is available. Would you like a virtual or in-person viewing?</p><p class="sent">In-person please. Is Saturday afternoon available?</p><p class="received">Saturday at 2 PM works. I’ll send the viewing details.</p></div><form id="message-form"><input aria-label="Message" placeholder="Message Ana about this listing…" /><button>Send</button></form></div></div></section>
-      </section>
+        <article class="paper prototype-page" id="host-mvps">
+          <header class="page-header"><span>ROOMIE MANILA - PRODUCT REQUIREMENTS</span><span>ACTUAL HOST MVPS</span></header>
+          <div class="section-marker">SECTION 06</div>
+          <h2>Host operations prototype</h2>
+          <p class="section-deck">The host MVP already demonstrates the operational skeleton: portfolio overview, listing states, inquiries, viewings, tenant context, and payment records.</p>
 
-      <section id="host-app" class="hidden">
-        <div class="host-header"><div><p class="eyebrow">Host workspace</p><h1>Good morning, Juan.</h1><p>Manage verified listings, qualified inquiries, and viewing requests in one place.</p></div><div><button class="secondary" id="tenant-switch">View renter marketplace</button><button class="primary" id="new-listing">+ Add listing</button></div></div>
-        <div class="host-metrics"><article><span>Active listings</span><strong>4</strong><small>3 verified · 1 in review</small></article><article><span>New inquiries</span><strong>12</strong><small>↑ 18% this week</small></article><article><span>Upcoming viewings</span><strong>5</strong><small>Next: today, 2:00 PM</small></article><article><span>Response rate</span><strong>94%</strong><small>Median response: 18 min</small></article></div>
-        <div class="host-grid"><section class="host-panel"><div class="panel-head"><div><p class="eyebrow">Portfolio</p><h2>Your listings</h2></div><button>View all</button></div><div class="host-listing"><img src="https://tjcha1213.github.io/mvproomie/assets/studio_cozy.png" alt="Cozy studio" /><div><b>Cozy Studio Unit</b><small>Katipunan, Quezon City · ₱8,500</small><span class="status good">Verified · Active</span></div><p><strong>96</strong><small>views</small></p><p><strong>4</strong><small>inquiries</small></p><button>Manage</button></div><div class="host-listing"><img src="https://tjcha1213.github.io/mvproomie/assets/apartment_1br.png" alt="One bedroom apartment" /><div><b>1BR Apartment</b><small>Cubao, Quezon City · ₱13,500</small><span class="status review">Verification in review</span></div><p><strong>158</strong><small>views</small></p><p><strong>7</strong><small>inquiries</small></p><button>Manage</button></div><div class="host-listing"><img src="https://tjcha1213.github.io/mvproomie/assets/bedspace_female.png" alt="Female bedspace" /><div><b>Female Bedspace</b><small>Sampaloc, Manila · ₱3,800</small><span class="status good">Verified · Active</span></div><p><strong>143</strong><small>views</small></p><p><strong>9</strong><small>inquiries</small></p><button>Manage</button></div></section><aside class="host-panel"><div class="panel-head"><div><p class="eyebrow">Attention</p><h2>Next actions</h2></div></div><ul class="task-list"><li><span>3</span><div><b>Reply to new inquiries</b><small>Oldest waiting 42 minutes</small></div><button>Open</button></li><li><span>1</span><div><b>Complete listing verification</b><small>Upload current utility bill</small></div><button>Review</button></li><li><span>2</span><div><b>Confirm viewing requests</b><small>Saturday schedules</small></div><button>Confirm</button></li></ul><div class="gcash-card"><div class="gcash-logo">G</div><div><b>Verify your host identity</b><p>Use GCash partner sign-in to add a verified identity signal to your profile.</p><button class="open-verification">Preview verification</button></div></div></aside></div>
-      </section>
-    </main>
+          <div class="prototype-grid four">
+            <figure class="prototype-figure"><div class="phone-frame"><img loading="lazy" src="./assets/host-mvp1-dashboard.png" alt="Actual Host MVP dashboard" /></div><figcaption><span>HOME</span><strong>Portfolio dashboard</strong><p>Active units, occupancy, collections, inquiries, views, and attention items.</p></figcaption></figure>
+            <figure class="prototype-figure"><div class="phone-frame"><img loading="lazy" src="./assets/host-mvp2-listings.png" alt="Actual Host MVP listings screen" /></div><figcaption><span>LISTINGS</span><strong>Inventory operations</strong><p>Active, occupied, and draft states with edit and occupancy actions.</p></figcaption></figure>
+            <figure class="prototype-figure"><div class="phone-frame"><img loading="lazy" src="./assets/host-mvp3-inquiries.png" alt="Actual Host MVP inquiries screen" /></div><figcaption><span>INQUIRIES</span><strong>Lead pipeline</strong><p>New and scheduled conversations connected to units and renter profiles.</p></figcaption></figure>
+            <figure class="prototype-figure"><div class="phone-frame"><img loading="lazy" src="./assets/host-mvp3-payments.png" alt="Actual Host MVP payments screen" /></div><figcaption><span>PAYMENTS</span><strong>Collection overview</strong><p>Paid, due, overdue, monthly trend, and collection-method summaries.</p></figcaption></figure>
+          </div>
 
-    <nav class="mobile-nav" aria-label="Mobile navigation"><button class="active" data-view="explore">⌂<span>Explore</span></button><button data-view="saved">♡<span>Saved</span></button><button data-view="inbox">▢<span>Inbox</span></button><button id="mobile-account">◎<span>Account</span></button></nav>
+          <h3>Host requirement sequence</h3>
+          <table class="prd-table requirements-table">
+            <thead><tr><th>ID</th><th>Capability</th><th>Next-MVP decision</th></tr></thead>
+            <tbody>
+              <tr><td>HO-01</td><td>Listing workflow</td><td>Build now: create, edit, preview, publish, pause, mark rented, and show quality/verification blockers.</td></tr>
+              <tr><td>HO-02</td><td>Inquiry pipeline</td><td>Build now: new, replied, viewing, approved/declined, closed, unread state, and response time.</td></tr>
+              <tr><td>HO-03</td><td>Viewing calendar</td><td>Build now: list/calendar, conflict warning, reminders, and linked renter/listing context.</td></tr>
+              <tr><td>HO-04</td><td>Dashboard</td><td>Build now: active units, listing issues, new inquiries, upcoming viewings, and response tasks.</td></tr>
+              <tr><td>TX-01</td><td>Payment operations</td><td>Validate later: persistent ledger, reminders, receipts, reconciliation, disputes, and secure financial data.</td></tr>
+            </tbody>
+          </table>
+          <div class="note"><b>Sequence decision.</b> Keep payment screens in the prototype portfolio, but productionize listing quality and inquiry/viewing operations first.</div>
+          <footer class="page-footer"><span>Source: /mvproomie host routes</span><span>Page 7</span></footer>
+        </article>
 
-    <dialog id="listing-dialog" class="listing-dialog"><button class="dialog-close" data-close="listing" aria-label="Close listing">×</button><div id="listing-detail"></div></dialog>
+        <article class="paper" id="trust">
+          <header class="page-header"><span>ROOMIE MANILA - PRODUCT REQUIREMENTS</span><span>TRUST AND LISTING QUALITY</span></header>
+          <div class="section-marker">SECTION 07</div>
+          <h2>Trust, verification, and safety</h2>
+          <p class="section-deck">Signals must be specific, current, explainable, and contestable. A badge is a statement about evidence checked - not a guarantee.</p>
 
-    <dialog id="verification-dialog" class="verification-dialog">
-      <button class="dialog-close" data-close="verification" aria-label="Close verification">×</button>
-      <div class="verification-header"><div class="gcash-logo large">G</div><div><p class="eyebrow">Identity verification</p><h2>Verify with GCash</h2><p>Connect a fully verified GCash account to add a trusted identity signal to Roomie.</p></div></div>
-      <div class="partner-note"><b>Partner integration preview</b><p>Production access requires approval through GCash for Business Single Sign-on. This prototype does not connect to GCash or collect financial credentials.</p></div>
-      <ol class="verification-steps"><li><span>1</span><div><b>Continue to GCash</b><small>GCash handles mobile number, OTP, and MPIN securely.</small></div></li><li><span>2</span><div><b>Review consent</b><small>Choose which verified profile fields may be shared with Roomie.</small></div></li><li><span>3</span><div><b>Return verified</b><small>Roomie stores verification status—not your MPIN or wallet balance.</small></div></li></ol>
-      <label class="consent"><input type="checkbox" id="consent-check" /> I understand this is a prototype and no real GCash connection will occur.</label>
-      <button class="gcash-action" id="verify-demo" disabled>Continue with GCash (demo)</button>
-      <p class="security-copy">Roomie will never ask you to enter your GCash MPIN outside the official GCash authorization flow.</p>
-    </dialog>
+          <table class="prd-table requirements-table">
+            <thead><tr><th>ID</th><th>Capability</th><th>Acceptance requirement</th></tr></thead>
+            <tbody>
+              <tr><td>TR-01</td><td>Identity verification</td><td>Show status only after approved evidence and liveness/manual checks; display verification date, never raw documents.</td></tr>
+              <tr><td>TR-02</td><td>Host authority</td><td>Distinguish owner, authorized representative, broker, and property manager; state the role and evidence status.</td></tr>
+              <tr><td>TR-03</td><td>Listing verification</td><td>Record property/address evidence, review status, reviewer type, and last verified date.</td></tr>
+              <tr><td>TR-04</td><td>Photo integrity</td><td>Require recent coverage of the current unit; flag duplicates, generated imagery, or material edits for review.</td></tr>
+              <tr><td>TR-05</td><td>Roomie Score</td><td>Show components, ranges, freshness, missing evidence, and improvement steps; never present as a safety guarantee.</td></tr>
+              <tr><td>TR-06</td><td>Reviews</td><td>Limit reviews to eligible interactions; separate host, tenant, and listing feedback; provide dispute process.</td></tr>
+              <tr><td>TR-07</td><td>Reporting</td><td>Accept reports from listings, profiles, and chat; confirm receipt, assign severity, preserve evidence, and show status.</td></tr>
+              <tr><td>TR-08</td><td>Moderation</td><td>Support pause, removal, warning, verification hold, restrictions, audit history, and appeal.</td></tr>
+            </tbody>
+          </table>
 
-    <dialog id="match-dialog" class="match-dialog"><button class="dialog-close" data-close="match" aria-label="Close match profile">×</button><p class="eyebrow">Compatibility profile</p><h2>What feels like home?</h2><form id="match-form"><label>Typical schedule<select><option>Early riser</option><option selected>Flexible / hybrid</option><option>Night owl</option></select></label><label>Social energy<select><option>Mostly private</option><option selected>Balanced</option><option>Social household</option></select></label><label>Noise preference<select><option selected>Quiet nights</option><option>Some activity is fine</option><option>Lively home</option></select></label><label>Household preferences<div class="choice-grid"><button type="button" class="selected">No smoking</button><button type="button">Pet-friendly</button><button type="button" class="selected">Guests okay</button></div></label><button class="primary" type="submit">Update matches</button></form></dialog>
+          <h3>Roomie Score safeguards</h3>
+          <ul class="document-list">
+            <li>Use only product-relevant evidence: verification, listing completeness/freshness, response reliability, and verified-interaction history.</li>
+            <li>Do not use protected traits, socioeconomic proxies, unverified social media, or inferred criminality.</li>
+            <li>Do not convert missing evidence into a low-trust label; offer alternative verification paths.</li>
+            <li>Log changes and expose a plain-language explanation, correction route, and appeal.</li>
+          </ul>
 
-    <div class="toast" id="toast" role="status" aria-live="polite"></div>
-    <footer><div><span class="brand-mark">R</span><b>roomie</b></div><p>Trusted rental matching for Metro Manila.</p><nav><a href="./Roomie_Manila_Revised_PRD.pdf">Product brief</a><a href="https://github.com/tjcha1213/roomieprd">GitHub</a><a href="https://gcash.com/business/partner-solutions/identity-solutions/single-sign-on">GCash partner information</a></nav></footer>
-    <script src="./app.js"></script>
+          <h3>Listing publication gate</h3>
+          <div class="gate-row"><span>Identity</span><i>+</i><span>Authority</span><i>+</i><span>Required facts</span><i>+</i><span>True cost</span><i>+</i><span>Current media</span><i>+</i><span>Availability</span><b>= PUBLISHABLE</b></div>
+          <footer class="page-footer"><span>Trust requirements TR-01 to TR-08</span><span>Page 8</span></footer>
+        </article>
+
+        <article class="paper" id="metrics">
+          <header class="page-header"><span>ROOMIE MANILA - PRODUCT REQUIREMENTS</span><span>METRICS AND VALIDATION</span></header>
+          <div class="section-marker">SECTION 08</div>
+          <h2>Success metrics and research gates</h2>
+          <p class="section-deck">Measure whether Roomie produces informed, safe marketplace progress - not simply traffic or screen engagement.</p>
+          <div class="callout"><strong>North-star metric:</strong> verified qualified contact rate - eligible listing views that lead to a message or viewing request after required cost, occupancy, location, and trust information is seen.</div>
+
+          <table class="prd-table">
+            <thead><tr><th>Dimension</th><th>Measures</th></tr></thead>
+            <tbody>
+              <tr><td><b>Trust</b></td><td>Verification completion; badge and score comprehension; confidence to contact; report rate; substantiated misleading-listing rate.</td></tr>
+              <tr><td><b>Listing quality</b></td><td>Required-field completeness; photo freshness; price/fee accuracy; stale availability; publish rejection reasons.</td></tr>
+              <tr><td><b>Discovery</b></td><td>Search-to-detail; useful-result rate; filter/sort use; zero results; saves; map/list interaction.</td></tr>
+              <tr><td><b>Conversion</b></td><td>Qualified contact; viewing request; host response; scheduled viewing; cancellation/no-show; response time.</td></tr>
+              <tr><td><b>Safety</b></td><td>Reports per interaction; urgent response; resolution time; appeal overturns; repeat offenders; blocked contacts.</td></tr>
+            </tbody>
+          </table>
+
+          <h3>Release gates</h3>
+          <table class="prd-table gate-table">
+            <thead><tr><th>Gate</th><th>Minimum evidence</th></tr></thead>
+            <tbody>
+              <tr><td>Trust comprehension</td><td>At least 80% correctly explain each badge and Roomie Score components without moderator help.</td></tr>
+              <tr><td>Decision quality</td><td>At least 80% correctly identify move-in cost, monthly cost, occupancy, lease duration, and availability.</td></tr>
+              <tr><td>Contact confidence</td><td>At least 70% report high confidence (4 or 5 of 5) before contacting a verified host.</td></tr>
+              <tr><td>Core usability</td><td>At least 90% complete search -> listing -> contact/viewing without a critical error; target SUS >= 80.</td></tr>
+              <tr><td>Safety readiness</td><td>Moderation ownership, evidence retention, appeal, and urgent escalation policies pass a tabletop test.</td></tr>
+            </tbody>
+          </table>
+
+          <h3>Next study</h3>
+          <p>Recruit at least 24 participants across renter segments plus 6-8 active hosts/property managers. Test the same core tasks across variants and measure task completion, time, errors, confidence, and unaided trust comprehension.</p>
+          <footer class="page-footer"><span>Metrics and validation</span><span>Page 9</span></footer>
+        </article>
+
+        <article class="paper" id="roadmap">
+          <header class="page-header"><span>ROOMIE MANILA - PRODUCT REQUIREMENTS</span><span>ROADMAP AND RISKS</span></header>
+          <div class="section-marker">SECTION 09</div>
+          <h2>Roadmap and ownership</h2>
+          <p class="section-deck">Retire the highest-risk assumptions before adding transaction exposure or marketplace breadth.</p>
+
+          <table class="prd-table roadmap-table">
+            <thead><tr><th>Stage</th><th>Time</th><th>Outcome</th><th>Owners</th></tr></thead>
+            <tbody>
+              <tr><td><b>0. Specify</b></td><td>1-2 weeks</td><td>Trust definitions, listing schema, score policy, moderation, research protocol, instrumentation.</td><td>Product, Design, Trust/Safety, Legal/Privacy</td></tr>
+              <tr><td><b>1. Integrate</b></td><td>2-4 weeks</td><td>One MVP2-based tenant flow and one consolidated host flow covering trust to viewing.</td><td>Design, Front-end, Research</td></tr>
+              <tr><td><b>2. Validate</b></td><td>2 weeks</td><td>24+ participant study, host tests, accessibility review, safety tabletop, critical retest.</td><td>Research, Product, Trust/Safety</td></tr>
+              <tr><td><b>3. Pilot</b></td><td>6-10 weeks</td><td>Persistent accounts/data, verification operations, moderation, notifications, audit logs, analytics.</td><td>Engineering, Operations, Trust/Safety</td></tr>
+              <tr><td><b>4. Transact</b></td><td>After gates</td><td>Documents, payment tracking/receipts, regulated partner assessment, limited pilot.</td><td>Product, Finance/Legal, Engineering</td></tr>
+            </tbody>
+          </table>
+
+          <h3>Highest risks</h3>
+          <table class="prd-table risk-table">
+            <thead><tr><th>Risk</th><th>Severity</th><th>Primary mitigation</th></tr></thead>
+            <tbody>
+              <tr><td>False assurance from badges or score</td><td><span class="severity high">High</span></td><td>Specific labels, evidence/date disclosure, no guarantees, comprehension tests, appeal.</td></tr>
+              <tr><td>Discrimination through profiles/ranking</td><td><span class="severity high">High</span></td><td>Permitted-field policy, protected-trait review, fairness tests, enforcement, recourse.</td></tr>
+              <tr><td>Fraud adapts to verification</td><td><span class="severity high">High</span></td><td>Layered checks, freshness, anomaly review, reports, holds, human escalation.</td></tr>
+              <tr><td>Thin verified inventory</td><td><span class="severity high">High</span></td><td>Focused geography, assisted onboarding, quality support, active freshness operations.</td></tr>
+              <tr><td>Prototype mistaken for production</td><td><span class="severity medium">Medium</span></td><td>Explicit boundary, architecture/security review, persistence and failure testing.</td></tr>
+              <tr><td>Payment and regulatory exposure</td><td><span class="severity high">High</span></td><td>Defer processing; assess licensed partners and obligations before build.</td></tr>
+            </tbody>
+          </table>
+          <footer class="page-footer"><span>Roadmap and risks</span><span>Page 10</span></footer>
+        </article>
+
+        <article class="paper" id="appendix">
+          <header class="page-header"><span>ROOMIE MANILA - PRODUCT REQUIREMENTS</span><span>TRACEABILITY</span></header>
+          <div class="section-marker">APPENDIX A</div>
+          <h2>Evidence-to-decision traceability</h2>
+          <p class="section-deck">Every major change is connected to user research or an implemented prototype pattern.</p>
+          <table class="prd-table trace-table">
+            <thead><tr><th>Decision</th><th>Evidence</th><th>Implemented reference</th></tr></thead>
+            <tbody>
+              <tr><td>Trust infrastructure is P0.</td><td>9/15 ranked Trust and Safety first; users requested verified people/properties, authentic photos, reviews, and true pricing.</td><td>Verified-host treatment and Roomie Score concepts in tenant detail/profile screens.</td></tr>
+              <tr><td>MVP2 is the discovery baseline.</td><td>Directional SUS 80.6 vs. 70.6 for MVP1 and MVP3.</td><td>Split map/list sheet, listing cards, map sync, and viewing request in <code>/mvp2/</code>.</td></tr>
+              <tr><td>Curated rails remain secondary.</td><td>Users value local discovery, but core decision information remains primary.</td><td>Neighborhood/budget rails in <code>/mvp3/</code>.</td></tr>
+              <tr><td>Host operations precede live payments.</td><td>Hosts valued payments, but research recommends trust and communication first.</td><td>Dashboard, listings, inquiries, calendar, and payment concepts across host routes.</td></tr>
+              <tr><td>Complete cost, occupancy, and location.</td><td>Requests for roommates, capacity, fees, lease terms, availability, commute, transit, flood/traffic, and daily needs.</td><td>Extend existing listing-detail and map structures rather than replacing them.</td></tr>
+            </tbody>
+          </table>
+
+          <h3>Prototype links</h3>
+          <div class="link-grid">
+            <a href="https://tjcha1213.github.io/mvproomie/mvp1/" target="_blank" rel="noopener"><span>Tenant</span><b>MVP 1</b><small>Map-first</small></a>
+            <a href="https://tjcha1213.github.io/mvproomie/mvp2/" target="_blank" rel="noopener"><span>Tenant</span><b>MVP 2</b><small>Split map/list</small></a>
+            <a href="https://tjcha1213.github.io/mvproomie/mvp3/" target="_blank" rel="noopener"><span>Tenant</span><b>MVP 3</b><small>Curated discovery</small></a>
+            <a href="https://tjcha1213.github.io/mvproomie/host/" target="_blank" rel="noopener"><span>Host</span><b>MVP 1</b><small>Dashboard</small></a>
+            <a href="https://tjcha1213.github.io/mvproomie/host2/" target="_blank" rel="noopener"><span>Host</span><b>MVP 2</b><small>Operations</small></a>
+            <a href="https://tjcha1213.github.io/mvproomie/host3/" target="_blank" rel="noopener"><span>Host</span><b>MVP 3</b><small>Workflow variant</small></a>
+          </div>
+
+          <h3>Source notes</h3>
+          <ul class="document-list source-list">
+            <li>Original Product Requirements Document - March 11, 2026.</li>
+            <li>Roomie Manila User Testing Readout - August 2026, 15 participants.</li>
+            <li>User Test Analysis (Screen Recordings) - qualitative findings.</li>
+            <li><code>mvproomie</code> source and captured prototype routes - November 2026.</li>
+          </ul>
+
+          <div class="final-block">
+            <p>Full downloadable specification</p>
+            <h3>Roomie Manila Revised PRD</h3>
+            <a href="./Roomie_Manila_Revised_PRD.pdf" target="_blank" rel="noopener">Open 19-page PDF ↗</a>
+          </div>
+          <footer class="page-footer"><span>End of document</span><span>Page 11</span></footer>
+        </article>
+      </main>
+    </div>
   </body>
 </html>
