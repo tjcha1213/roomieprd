@@ -28,7 +28,7 @@
         <p class="toc-label">Document contents</p>
         <a href="#cover"><span>00</span>Cover</a>
         <a href="#summary"><span>01</span>Executive summary</a>
-        <a href="#research"><span>02</span>Research evidence</a>
+        <a href="#research"><span>02</span>Validated build direction</a>
         <a href="#definition"><span>03</span>Product definition</a>
         <a href="#tenant-mvps"><span>04</span>Tenant MVPs</a>
         <a href="#tenant-flow"><span>05</span>Tenant requirements</a>
@@ -36,7 +36,9 @@
         <a href="#trust"><span>07</span>Trust and listing quality</a>
         <a href="#metrics"><span>08</span>Metrics and validation</a>
         <a href="#engineering"><span>09</span>Engineering specification</a>
-        <a href="#roadmap"><span>10</span>Roadmap and risks</a>
+        <a href="#build-contract"><span>10</span>AI build contract</a>
+        <a href="#delivery"><span>11</span>Deployment acceptance</a>
+        <a href="#roadmap"><span>12</span>Delivery plan and risks</a>
         <a href="#appendix"><span>A</span>Traceability</a>
       </aside>
 
@@ -56,8 +58,8 @@
           <table class="meta-table">
             <tbody>
               <tr><th>Authors</th><td>Tae Jun TJ Cha and Takashi Ban</td></tr>
-              <tr><th>Status</th><td>Working PRD for product, design, engineering, and trust/safety</td></tr>
-              <tr><th>Revision</th><td>2.2 - full-stack implementation reference</td></tr>
+              <tr><th>Status</th><td>Implementation PRD for product, CTO/engineering, design, and trust/safety</td></tr>
+              <tr><th>Revision</th><td>2.3 - AI-ready full-stack delivery specification</td></tr>
               <tr><th>Date</th><td>November 2026</td></tr>
               <tr><th>Market</th><td>Metro Manila rental housing</td></tr>
               <tr><th>Primary users</th><td>Renters and hosts/property managers</td></tr>
@@ -69,11 +71,11 @@
             <strong>Evidence base</strong>
             <p>Original March 2026 PRD, August 2026 user-testing readout, screen-recording analysis, six implemented Roomie prototype routes, and BahayTrust's Philippines microhousing research.</p>
           </div>
-          <footer class="page-footer"><span>ROOMIE MANILA</span><span>PRD 2.2</span></footer>
+          <footer class="page-footer"><span>ROOMIE MANILA</span><span>PRD 2.3</span></footer>
         </article>
 
         <article class="paper" id="summary">
-          <header class="page-header"><span>ROOMIE MANILA - PRODUCT REQUIREMENTS</span><span>USER-TESTING-ALIGNED MVP</span></header>
+          <header class="page-header"><span>ROOMIE MANILA - PRODUCT REQUIREMENTS</span><span>AI-READY IMPLEMENTATION PRD</span></header>
           <div class="section-marker">SECTION 01</div>
           <h2>Executive summary</h2>
           <p class="section-deck">The authoritative product and implementation brief for the team building Roomie. It defines the outcome, scope, requirements, release gates, and technical boundaries; it is not the product itself.</p>
@@ -103,30 +105,28 @@
         </article>
 
         <article class="paper" id="research">
-          <header class="page-header"><span>ROOMIE MANILA - PRODUCT REQUIREMENTS</span><span>RESEARCH EVIDENCE</span></header>
+          <header class="page-header"><span>ROOMIE MANILA - PRODUCT REQUIREMENTS</span><span>VALIDATED BUILD DIRECTION</span></header>
           <div class="section-marker">SECTION 02</div>
-          <h2>What the research says</h2>
-          <p class="section-deck">The findings support a clear sequence: establish trust, improve decision quality, then add transaction tools.</p>
-          <div class="stat-grid">
-            <div><strong>74.2</strong><span>Average SUS</span><small>15 participants</small></div>
-            <div><strong>80.6</strong><span>Tenant MVP2 SUS</span><small>n=4; directional</small></div>
-            <div><strong>60%</strong><span>Trust ranked first</span><small>9 of 15 participants</small></div>
-            <div><strong>3.73/4</strong><span>Recommendation</span><small>Average rating</small></div>
+          <h2>What to build from the MVPs</h2>
+          <p class="section-deck">The research is used here only to select a build direction. Detailed survey results remain in the source readout.</p>
+
+          <div class="callout"><strong>Outcome:</strong> Tenant MVP2 performed best. Use its split map/list discovery pattern as the deployable renter experience.</div>
+
+          <div class="three-column-table">
+            <section><b>Keep</b><p>MVP2 map/list discovery, synchronized listing context, listing details, chat, and viewing requests.</p></section>
+            <section><b>Strengthen</b><p>Verified identity/listings, total costs, occupancy, current media, lease terms, location context, reporting, and stable navigation.</p></section>
+            <section><b>Defer</b><p>Payment processing, escrow, roommate matching, ancillary services, investor tools, and sales workflows.</p></section>
           </div>
 
-          <table class="prd-table evidence-table">
-            <thead><tr><th>Evidence</th><th>Interpretation</th><th>Requirement consequence</th></tr></thead>
-            <tbody>
-              <tr><td>Trust and Safety ranked #1 by 9 of 15.</td><td>Trust is the core value proposition, not a support feature.</td><td>P0 verification, reviews, photo integrity, transparent pricing, score explanation, and reporting.</td></tr>
-              <tr><td>14 of 15 found listing details broadly clear.</td><td>The visual foundation works, but decision-critical facts are missing.</td><td>Add occupancy, roommates, lease, fees, availability, building facts, and documents.</td></tr>
-              <tr><td>MVP2 SUS 80.6; MVP1 and MVP3 70.6.</td><td>The split map/list pattern is the strongest directional starting point.</td><td>Use MVP2 as the primary discovery baseline; preserve useful patterns from MVP1 and MVP3.</td></tr>
-              <tr><td>Facebook is the main alternative.</td><td>Roomie cannot initially win on inventory size; it can win on structure and credibility.</td><td>Standardized listings, visible verification, local context, and clear safety signals.</td></tr>
-              <tr><td>Payments were valued, particularly by hosts.</td><td>Transaction tools have pull but depend on trusted people and properties.</td><td>Sequence Discovery -> Verification -> Communication -> Documentation -> Payments.</td></tr>
-              <tr><td>Recordings exposed sorting and navigation gaps.</td><td>Small flow breaks undermine confidence.</td><td>Add price/relevance sort and preserve the originating listing when entering or leaving chat.</td></tr>
-            </tbody>
-          </table>
-          <div class="note"><b>Research caveat.</b> This 15-participant sample supports prioritization and hypothesis formation, not population estimates. Each tenant MVP had four testers.</div>
-          <footer class="page-footer"><span>Roomie Manila User Testing - August 2026</span><span>Page 3</span></footer>
+          <h3>Deployable v1 focus</h3>
+          <ol class="document-list">
+            <li>A renter can find an available listing, understand its complete cost and trust evidence, message the host, and request a viewing.</li>
+            <li>A host can create and verify a listing, publish it, respond to inquiries, and manage viewing status.</li>
+            <li>An operator can review verification evidence, moderate listings/users, resolve reports, and inspect an audit trail.</li>
+          </ol>
+
+          <div class="note"><b>Build rule.</b> Do not reproduce all three prototypes. Consolidate them into one production renter flow based on MVP2 and one production host flow based on the strongest host screens.</div>
+          <footer class="page-footer"><span>Decision summary from user testing</span><span>Page 3</span></footer>
         </article>
 
         <article class="paper" id="definition">
@@ -316,7 +316,7 @@
           <header class="page-header"><span>ROOMIE MANILA - PRODUCT REQUIREMENTS</span><span>METRICS AND VALIDATION</span></header>
           <div class="section-marker">SECTION 08</div>
           <h2>Success metrics and research gates</h2>
-          <p class="section-deck">Measure whether Roomie produces informed, safe marketplace progress - not simply traffic or screen engagement.</p>
+          <p class="section-deck">Measure whether the deployable product produces informed, safe marketplace progress—not traffic or screen engagement alone.</p>
           <div class="callout"><strong>North-star metric:</strong> verified qualified contact rate - eligible listing views that lead to a message or viewing request after required cost, occupancy, location, and trust information is seen.</div>
 
           <table class="prd-table">
@@ -330,20 +330,20 @@
             </tbody>
           </table>
 
-          <h3>Release gates</h3>
+          <h3>Product acceptance gates</h3>
           <table class="prd-table gate-table">
             <thead><tr><th>Gate</th><th>Minimum evidence</th></tr></thead>
             <tbody>
-              <tr><td>Trust comprehension</td><td>At least 80% correctly explain each badge and Roomie Score components without moderator help.</td></tr>
-              <tr><td>Decision quality</td><td>At least 80% correctly identify move-in cost, monthly cost, occupancy, lease duration, and availability.</td></tr>
-              <tr><td>Contact confidence</td><td>At least 70% report high confidence (4 or 5 of 5) before contacting a verified host.</td></tr>
-              <tr><td>Core usability</td><td>At least 90% complete search -> listing -> contact/viewing without a critical error; target SUS >= 80.</td></tr>
-              <tr><td>Safety readiness</td><td>Moderation ownership, evidence retention, appeal, and urgent escalation policies pass a tabletop test.</td></tr>
+              <tr><td>Renter journey</td><td>Search → listing → message/viewing completes on desktop and mobile with persisted state and no critical error.</td></tr>
+              <tr><td>Host journey</td><td>Create → submit → verify → publish → inquiry/viewing management completes with role enforcement.</td></tr>
+              <tr><td>Decision information</td><td>Monthly cost, move-in cost, occupancy, lease, availability, location, and verification source are visible before contact.</td></tr>
+              <tr><td>Safety operations</td><td>Reports, evidence, moderation action, appeal, and audit events are usable end-to-end by authorized operators.</td></tr>
+              <tr><td>Production readiness</td><td>Automated tests, security checks, migrations, backups, monitoring, runbook, and rollback pass in staging.</td></tr>
             </tbody>
           </table>
 
-          <h3>Next study</h3>
-          <p>Recruit at least 24 participants across renter segments plus 6-8 active hosts/property managers. Test the same core tasks across variants and measure task completion, time, errors, confidence, and unaided trust comprehension.</p>
+          <h3>Instrumentation required at launch</h3>
+          <p>Track search, listing impressions/details, trust-detail views, saves, messages, viewing state changes, host response time, listing completeness, reports, moderation outcomes, and errors. Do not send raw identity evidence, message contents, or sensitive personal data to analytics.</p>
           <footer class="page-footer"><span>Metrics and validation</span><span>Page 9</span></footer>
         </article>
 
@@ -387,20 +387,104 @@
           <footer class="page-footer"><span>Platform requirements PL-01 to PL-06</span><span>Page 10</span></footer>
         </article>
 
+        <article class="paper" id="build-contract">
+          <header class="page-header"><span>ROOMIE MANILA - PRODUCT REQUIREMENTS</span><span>AI BUILD CONTRACT</span></header>
+          <div class="section-marker">SECTION 10</div>
+          <h2>Implementation contract for coding agents</h2>
+          <p class="section-deck">Use this contract with the functional requirements in Sections 05–09. An implementation may change technologies through a documented architecture decision, but it may not silently change product scope or acceptance behavior.</p>
+
+          <h3>Reference stack</h3>
+          <table class="prd-table">
+            <thead><tr><th>Concern</th><th>Default implementation</th></tr></thead>
+            <tbody>
+              <tr><td><b>Application</b></td><td>TypeScript; Next.js responsive web client and server/API routes; shared runtime validation and typed contracts.</td></tr>
+              <tr><td><b>Data</b></td><td>PostgreSQL with PostGIS; versioned migrations; transactional writes; seed data separated from production data.</td></tr>
+              <tr><td><b>Identity</b></td><td>Managed authentication with email/phone recovery; server-side RBAC for renter, host/manager, moderator, and admin.</td></tr>
+              <tr><td><b>Files/jobs</b></td><td>S3-compatible private object storage, signed URLs, image processing, and a durable background-job mechanism.</td></tr>
+              <tr><td><b>Quality</b></td><td>Unit/integration tests plus Playwright critical-journey tests; structured logs, error tracking, health checks, and analytics consent.</td></tr>
+            </tbody>
+          </table>
+
+          <h3>Canonical domain model</h3>
+          <table class="prd-table compact-table">
+            <thead><tr><th>Entity group</th><th>Required records and relationships</th></tr></thead>
+            <tbody>
+              <tr><td><b>Identity</b></td><td>User, Role, Profile, Consent, VerificationCase, VerificationEvidence metadata. Evidence objects remain private.</td></tr>
+              <tr><td><b>Inventory</b></td><td>Property, Listing, ListingVersion, Unit, CostItem, Amenity, Availability, Media, HostAuthority, Location.</td></tr>
+              <tr><td><b>Marketplace</b></td><td>SavedListing, Conversation, ConversationParticipant, Message, ViewingRequest, NotificationPreference.</td></tr>
+              <tr><td><b>Trust operations</b></td><td>Review, Report, ModerationCase, ModerationAction, Appeal, RoomieScoreSnapshot, AuditEvent.</td></tr>
+            </tbody>
+          </table>
+
+          <h3>Required state machines</h3>
+          <table class="prd-table compact-table">
+            <tbody>
+              <tr><th>Listing</th><td>draft → submitted → under_review → published → paused | rented | expired; under_review → needs_changes | rejected.</td></tr>
+              <tr><th>Verification</th><td>unverified → pending → verified | needs_action | rejected | expired.</td></tr>
+              <tr><th>Viewing</th><td>proposed → confirmed | rescheduled → completed | cancelled | no_show.</td></tr>
+              <tr><th>Report</th><td>open → triaged → investigating → actioned | dismissed → appealed → closed.</td></tr>
+            </tbody>
+          </table>
+
+          <div class="note"><b>Agent constraint.</b> Never simulate a production integration. GCash, maps, messaging, and email/SMS must use provider adapters, environment-based credentials, explicit sandbox/mock modes, and safe failure states.</div>
+          <footer class="page-footer"><span>Canonical build contract</span><span>Page 11</span></footer>
+        </article>
+
+        <article class="paper" id="delivery">
+          <header class="page-header"><span>ROOMIE MANILA - PRODUCT REQUIREMENTS</span><span>DEPLOYMENT ACCEPTANCE</span></header>
+          <div class="section-marker">SECTION 11</div>
+          <h2>Deployable deliverable</h2>
+          <p class="section-deck">“Complete” means a running, testable system with operational controls—not generated screens or a local demo.</p>
+
+          <h3>Required application surfaces</h3>
+          <table class="prd-table requirements-table">
+            <thead><tr><th>ID</th><th>Surface</th><th>Required result</th></tr></thead>
+            <tbody>
+              <tr><td>DL-01</td><td>Public/renter</td><td>Search, filters, map/list, listing detail, trust explanation, save, message, viewing request, report, account settings.</td></tr>
+              <tr><td>DL-02</td><td>Host</td><td>Onboarding, authority/identity submission, listing editor/preview, publish status, inquiries, chat, viewings, notifications.</td></tr>
+              <tr><td>DL-03</td><td>Operations</td><td>Verification and report queues, evidence review, actions/appeals, user/listing history, audit lookup, least-privilege access.</td></tr>
+              <tr><td>DL-04</td><td>Platform</td><td>Authentication, persistence, media storage, geospatial search, notifications, background jobs, audit events, observability.</td></tr>
+            </tbody>
+          </table>
+
+          <h3>Interface contract</h3>
+          <table class="prd-table compact-table">
+            <thead><tr><th>Resource</th><th>Minimum operations</th></tr></thead>
+            <tbody>
+              <tr><td><code>/api/listings</code></td><td>Search/read; host create/update/submit/pause; operator approve/request-changes/reject. Enforce visibility by state and role.</td></tr>
+              <tr><td><code>/api/conversations</code></td><td>Create from listing, list authorized threads, send/read messages, block/report. Preserve listing snapshot.</td></tr>
+              <tr><td><code>/api/viewings</code></td><td>Propose, confirm, reschedule, cancel, complete/no-show with actor, timestamp, and notifications.</td></tr>
+              <tr><td><code>/api/verifications</code></td><td>Create case, attach private evidence metadata, provider callback, manual review, expire/revoke; never expose secrets.</td></tr>
+              <tr><td><code>/api/reports</code></td><td>Submit, triage, action, appeal, close; write immutable audit events for every privileged change.</td></tr>
+            </tbody>
+          </table>
+
+          <h3>Definition of done</h3>
+          <ul class="document-list">
+            <li>Production, staging, and preview environments deploy from version control with documented configuration and no committed secrets.</li>
+            <li>Database migrations, rollback procedure, backups/restore test, seed/demo accounts, API documentation, and an operator runbook are included.</li>
+            <li>Critical renter, host, and operator journeys pass automated tests; authorization, file access, validation, rate limits, and common abuse cases are tested.</li>
+            <li>Responsive accessibility, loading/empty/error states, monitoring alerts, dependency/license review, and privacy/retention behavior pass release review.</li>
+            <li>A handoff README explains local setup, architecture, environment variables, deployment, test commands, known limitations, and next decisions.</li>
+          </ul>
+          <div class="callout compact"><strong>Release rule:</strong> if a required external provider is unavailable, ship a clearly labeled sandbox adapter or defer the feature. Do not present mock verification or notifications as real.</div>
+          <footer class="page-footer"><span>Delivery requirements DL-01 to DL-04</span><span>Page 12</span></footer>
+        </article>
+
         <article class="paper" id="roadmap">
           <header class="page-header"><span>ROOMIE MANILA - PRODUCT REQUIREMENTS</span><span>ROADMAP AND RISKS</span></header>
-          <div class="section-marker">SECTION 10</div>
-          <h2>Roadmap and ownership</h2>
-          <p class="section-deck">Retire the highest-risk assumptions before adding transaction exposure or marketplace breadth.</p>
+          <div class="section-marker">SECTION 12</div>
+          <h2>Delivery plan and ownership</h2>
+          <p class="section-deck">Build one complete vertical slice, prove it in staging, then expand. Do not generate the entire surface area before identity, permissions, persistence, and moderation work end-to-end.</p>
 
           <table class="prd-table roadmap-table">
             <thead><tr><th>Stage</th><th>Time</th><th>Outcome</th><th>Owners</th></tr></thead>
             <tbody>
-              <tr><td><b>0. Specify</b></td><td>1-2 weeks</td><td>Trust definitions, listing/data schema, architecture decisions, GCash partner discovery and fallback, moderation, research protocol, instrumentation.</td><td>Product, CTO/Engineering, Design, Trust/Safety, Legal/Privacy</td></tr>
-              <tr><td><b>1. Integrate</b></td><td>2-4 weeks</td><td>One MVP2-based tenant flow and one consolidated host flow covering trust to viewing.</td><td>Design, Front-end, Research</td></tr>
-              <tr><td><b>2. Validate</b></td><td>2 weeks</td><td>24+ participant study, host tests, accessibility review, safety tabletop, critical retest.</td><td>Research, Product, Trust/Safety</td></tr>
-              <tr><td><b>3. Build pilot</b></td><td>6-10 weeks</td><td>Persistent accounts/data, verified listings, search, chat/viewings, moderation, notifications, audit logs, analytics, security and recovery controls.</td><td>CTO/Engineering, Operations, Trust/Safety</td></tr>
-              <tr><td><b>4. Transact</b></td><td>After gates</td><td>Documents, payment tracking/receipts, regulated partner assessment, limited pilot.</td><td>Product, Finance/Legal, Engineering</td></tr>
+              <tr><td><b>0. Decide</b></td><td>Week 1</td><td>Approve architecture, schema, providers, environments, trust policy, pilot geography, acceptance tests, and ADRs.</td><td>CTO, Product, Design, Trust/Safety</td></tr>
+              <tr><td><b>1. Foundation</b></td><td>Weeks 2–3</td><td>Repo, CI/CD, environments, auth/RBAC, database/migrations, storage, observability, seed data, design tokens.</td><td>Engineering</td></tr>
+              <tr><td><b>2. Vertical slice</b></td><td>Weeks 4–6</td><td>Host draft/submission → operator approval → renter search/detail → message/viewing, fully persisted and tested.</td><td>Engineering, Product, Design</td></tr>
+              <tr><td><b>3. Harden</b></td><td>Weeks 7–8</td><td>Reporting/moderation, notifications, failure states, accessibility, security/privacy review, load checks, backup/restore.</td><td>Engineering, Trust/Safety</td></tr>
+              <tr><td><b>4. Pilot</b></td><td>After gates</td><td>Limited verified inventory, monitored production release, support coverage, incident/rollback readiness, metrics review.</td><td>Product, CTO, Operations</td></tr>
             </tbody>
           </table>
 
@@ -416,7 +500,7 @@
               <tr><td>Payment and regulatory exposure</td><td><span class="severity high">High</span></td><td>Defer processing; assess licensed partners and obligations before build.</td></tr>
             </tbody>
           </table>
-          <footer class="page-footer"><span>Roadmap and risks</span><span>Page 11</span></footer>
+          <footer class="page-footer"><span>Delivery plan and risks</span><span>Page 13</span></footer>
         </article>
 
         <article class="paper" id="appendix">
@@ -427,8 +511,8 @@
           <table class="prd-table trace-table">
             <thead><tr><th>Decision</th><th>Evidence</th><th>Implemented reference</th></tr></thead>
             <tbody>
-              <tr><td>Trust infrastructure is P0.</td><td>9/15 ranked Trust and Safety first; users requested verified people/properties, authentic photos, reviews, and true pricing.</td><td>Verified-host treatment and Roomie Score concepts in tenant detail/profile screens.</td></tr>
-              <tr><td>MVP2 is the discovery baseline.</td><td>Directional SUS 80.6 vs. 70.6 for MVP1 and MVP3.</td><td>Split map/list sheet, listing cards, map sync, and viewing request in <code>/mvp2/</code>.</td></tr>
+              <tr><td>Trust infrastructure is P0.</td><td>Testing made trust, accurate information, and transparent cost the primary build focus.</td><td>Verified-host treatment and Roomie Score concepts in tenant detail/profile screens.</td></tr>
+              <tr><td>MVP2 is the discovery baseline.</td><td>MVP2 produced the strongest tenant-testing outcome.</td><td>Split map/list sheet, listing cards, map sync, and viewing request in <code>/mvp2/</code>.</td></tr>
               <tr><td>Curated rails remain secondary.</td><td>Users value local discovery, but core decision information remains primary.</td><td>Neighborhood/budget rails in <code>/mvp3/</code>.</td></tr>
               <tr><td>Host operations precede live payments.</td><td>Hosts valued payments, but research recommends trust and communication first.</td><td>Dashboard, listings, inquiries, calendar, and payment concepts across host routes.</td></tr>
               <tr><td>Complete cost, occupancy, and location.</td><td>Requests for roommates, capacity, fees, lease terms, availability, commute, transit, flood/traffic, and daily needs.</td><td>Extend existing listing-detail and map structures rather than replacing them.</td></tr>
@@ -450,7 +534,7 @@
           <h3>Source notes</h3>
           <ul class="document-list source-list">
             <li>Original Product Requirements Document - March 11, 2026.</li>
-            <li>Roomie Manila User Testing Readout - August 2026, 15 participants.</li>
+            <li>Roomie Manila User Testing Readout - August 2026.</li>
             <li>User Test Analysis (Screen Recordings) - qualitative findings.</li>
             <li><code>mvproomie</code> source and captured prototype routes - November 2026.</li>
             <li><code>bahaytrust</code> market, microhousing, and trust-platform context - November 2026.</li>
@@ -462,7 +546,7 @@
             <h3>Roomie Manila Revised PRD (PDF)</h3>
             <a href="./Roomie_Manila_Revised_PRD.pdf" target="_blank" rel="noopener">Open 19-page reference PDF ↗</a>
           </div>
-          <footer class="page-footer"><span>End of document</span><span>Page 12</span></footer>
+          <footer class="page-footer"><span>End of document</span><span>Page 14</span></footer>
         </article>
       </main>
     </div>
