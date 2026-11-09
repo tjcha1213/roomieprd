@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Roomie Manila product requirements document, aligned to user testing and the implemented tenant and host MVPs." />
+    <meta name="description" content="Roomie product requirements document for the product, design, and engineering teams, grounded in BahayTrust research and the tested Roomie MVPs." />
     <meta name="theme-color" content="#0b2d3d" />
     <title>Roomie Manila | Product Requirements Document</title>
     <link rel="stylesheet" href="./styles.css" />
@@ -19,7 +19,7 @@
       <div class="toolbar-actions">
         <a href="https://tjcha1213.github.io/mvproomie/" target="_blank" rel="noopener">Open MVP hub</a>
         <button type="button" onclick="window.print()">Print</button>
-        <a class="download" href="./Roomie_Manila_Revised_PRD.pdf" download>Download PDF</a>
+        <a class="download" href="./Roomie_Manila_Revised_PRD.pdf" download>Reference PDF</a>
       </div>
     </header>
 
@@ -35,7 +35,8 @@
         <a href="#host-mvps"><span>06</span>Host MVPs</a>
         <a href="#trust"><span>07</span>Trust and listing quality</a>
         <a href="#metrics"><span>08</span>Metrics and validation</a>
-        <a href="#roadmap"><span>09</span>Roadmap and risks</a>
+        <a href="#engineering"><span>09</span>Engineering specification</a>
+        <a href="#roadmap"><span>10</span>Roadmap and risks</a>
         <a href="#appendix"><span>A</span>Traceability</a>
       </aside>
 
@@ -48,37 +49,39 @@
           </div>
           <div class="cover-copy">
             <p class="kicker">Product Requirements Document</p>
-            <h1>User-testing-aligned<br />MVP specification</h1>
-            <p class="cover-subtitle">A focused product definition for a trusted Metro Manila rental marketplace, grounded in the actual tenant and host prototypes.</p>
+            <h1>Full-stack product<br />requirements</h1>
+            <p class="cover-subtitle">The implementation reference for a trusted Metro Manila rental platform, grounded in BahayTrust research and the tested Roomie tenant and host prototypes.</p>
             <div class="cover-statement">Make Metro Manila's fragmented rental market structured, transparent, and trustworthy - so a renter can confidently contact a host and schedule a viewing.</div>
           </div>
           <table class="meta-table">
             <tbody>
               <tr><th>Authors</th><td>Tae Jun TJ Cha and Takashi Ban</td></tr>
-              <tr><th>Revision</th><td>2.1 - prototype-integrated web edition</td></tr>
+              <tr><th>Status</th><td>Working PRD for product, design, engineering, and trust/safety</td></tr>
+              <tr><th>Revision</th><td>2.2 - full-stack implementation reference</td></tr>
               <tr><th>Date</th><td>November 2026</td></tr>
               <tr><th>Market</th><td>Metro Manila rental housing</td></tr>
               <tr><th>Primary users</th><td>Renters and hosts/property managers</td></tr>
-              <tr><th>Prototype source</th><td><a href="https://github.com/tjcha1213/mvproomie" target="_blank" rel="noopener">tjcha1213/mvproomie</a></td></tr>
+              <tr><th>Working product name</th><td>Roomie (tentative)</td></tr>
+              <tr><th>Product sources</th><td><a href="https://github.com/tjcha1213/mvproomie" target="_blank" rel="noopener">/mvproomie</a> interaction prototypes · <a href="https://github.com/tjcha1213/bahaytrust" target="_blank" rel="noopener">/bahaytrust</a> market and trust context</td></tr>
             </tbody>
           </table>
           <div class="cover-evidence">
             <strong>Evidence base</strong>
-            <p>Original March 2026 PRD, August 2026 user-testing readout, screen-recording analysis, and the six implemented Roomie prototype routes.</p>
+            <p>Original March 2026 PRD, August 2026 user-testing readout, screen-recording analysis, six implemented Roomie prototype routes, and BahayTrust's Philippines microhousing research.</p>
           </div>
-          <footer class="page-footer"><span>ROOMIE MANILA</span><span>PRD 2.1</span></footer>
+          <footer class="page-footer"><span>ROOMIE MANILA</span><span>PRD 2.2</span></footer>
         </article>
 
         <article class="paper" id="summary">
           <header class="page-header"><span>ROOMIE MANILA - PRODUCT REQUIREMENTS</span><span>USER-TESTING-ALIGNED MVP</span></header>
           <div class="section-marker">SECTION 01</div>
           <h2>Executive summary</h2>
-          <p class="section-deck">A narrower, evidence-led product definition based on what users valued and what the prototypes actually demonstrate.</p>
+          <p class="section-deck">The authoritative product and implementation brief for the team building Roomie. It defines the outcome, scope, requirements, release gates, and technical boundaries; it is not the product itself.</p>
           <div class="callout"><strong>Trust is the product.</strong> Search is the entry point. A confident contact or viewing request is the first meaningful outcome.</div>
 
           <h3>What changed from the prior PRD</h3>
           <ul class="document-list">
-            <li>Replaced the broad BahayTrust real-estate infrastructure concept with a focused Metro Manila rental marketplace.</li>
+            <li>Positioned Roomie as the tentative renter/host product informed by BahayTrust's wider market, research, and trust thesis.</li>
             <li>Reduced the primary audience to renters and hosts/property managers.</li>
             <li>Made verified identity/listings, transparent costs, current photos, reviews, and explainable Roomie Scores the P0 trust layer.</li>
             <li>Made occupancy, roommate context, lease terms, fees, and commute/neighborhood context required listing information.</li>
@@ -95,6 +98,7 @@
 
           <h3>Prototype status</h3>
           <p>The current MVPs are interactive React front-end prototypes with mock state and data. They validate interaction patterns; they do not yet prove production authentication, verification, moderation, payments, persistence, privacy controls, or marketplace operations.</p>
+          <div class="note"><b>Document rule.</b> This web PRD is the current source of truth for implementation decisions. Prototype screens are evidence and interaction references, not production specifications when they conflict with this document.</div>
           <footer class="page-footer"><span>November 2026</span><span>Page 2</span></footer>
         </article>
 
@@ -136,6 +140,16 @@
 
           <h3>Product vision</h3>
           <div class="callout compact">Roomie is the trusted rental layer for Metro Manila: a structured marketplace where credible people and properties are easy to understand, compare, contact, and manage.</div>
+
+          <h3>Product and source relationship</h3>
+          <table class="prd-table">
+            <tbody>
+              <tr><th>Roomie</th><td>The tentative product name and full-stack application specified in this PRD.</td></tr>
+              <tr><th><code>/mvproomie</code></th><td>The tested interaction portfolio. It supplies tenant and host workflows, UI patterns, and usability evidence.</td></tr>
+              <tr><th><code>/bahaytrust</code></th><td>The wider Philippines microhousing, market-intelligence, and trust context that informs product strategy.</td></tr>
+              <tr><th><code>/roomiedraft</code></th><td>A separate exploratory marketplace implementation; it is not the PRD or the production architecture.</td></tr>
+            </tbody>
+          </table>
 
           <h3>Primary jobs to be done</h3>
           <table class="prd-table">
@@ -271,7 +285,7 @@
           <table class="prd-table requirements-table">
             <thead><tr><th>ID</th><th>Capability</th><th>Acceptance requirement</th></tr></thead>
             <tbody>
-              <tr><td>TR-01</td><td>Identity verification</td><td>Show status only after approved evidence and liveness/manual checks; display verification date, never raw documents.</td></tr>
+              <tr><td>TR-01</td><td>Identity verification</td><td>Prefer GCash Single Sign-on/KYC identity assertions if Roomie is approved as a partner; provide an equivalent manual/provider fallback. Show verification source and date, never raw credentials or documents.</td></tr>
               <tr><td>TR-02</td><td>Host authority</td><td>Distinguish owner, authorized representative, broker, and property manager; state the role and evidence status.</td></tr>
               <tr><td>TR-03</td><td>Listing verification</td><td>Record property/address evidence, review status, reviewer type, and last verified date.</td></tr>
               <tr><td>TR-04</td><td>Photo integrity</td><td>Require recent coverage of the current unit; flag duplicates, generated imagery, or material edits for review.</td></tr>
@@ -289,6 +303,9 @@
             <li>Do not convert missing evidence into a low-trust label; offer alternative verification paths.</li>
             <li>Log changes and expose a plain-language explanation, correction route, and appeal.</li>
           </ul>
+
+          <h3>GCash verification boundary</h3>
+          <div class="note"><b>External dependency.</b> GCash identity integration requires partner approval, technical onboarding, and production credentials. Roomie must never request or store a user's GCash MPIN, OTP, wallet balance, or transaction history. Until approval is secured, use a consent-based manual or accredited identity-provider fallback and label the verification source accurately.</div>
 
           <h3>Listing publication gate</h3>
           <div class="gate-row"><span>Identity</span><i>+</i><span>Authority</span><i>+</i><span>Required facts</span><i>+</i><span>True cost</span><i>+</i><span>Current media</span><i>+</i><span>Availability</span><b>= PUBLISHABLE</b></div>
@@ -330,19 +347,59 @@
           <footer class="page-footer"><span>Metrics and validation</span><span>Page 9</span></footer>
         </article>
 
+        <article class="paper" id="engineering">
+          <header class="page-header"><span>ROOMIE MANILA - PRODUCT REQUIREMENTS</span><span>ENGINEERING SPECIFICATION</span></header>
+          <div class="section-marker">SECTION 09</div>
+          <h2>Full-stack implementation boundary</h2>
+          <p class="section-deck">The first production pilot is a responsive web application backed by persistent services. The architecture may evolve, but these capabilities and controls are required.</p>
+
+          <h3>Logical architecture</h3>
+          <table class="prd-table">
+            <thead><tr><th>Layer</th><th>Required responsibility</th></tr></thead>
+            <tbody>
+              <tr><td><b>Client</b></td><td>Responsive renter and host web experiences, accessible navigation, resilient form states, and explicit loading/error/empty states.</td></tr>
+              <tr><td><b>Application/API</b></td><td>Authentication, roles, profiles, listings, matching/search, inquiries, chat, viewings, verification, reporting, moderation, and notifications.</td></tr>
+              <tr><td><b>Data</b></td><td>Relational system of record, private object storage for media/evidence, geospatial search, immutable audit events, retention/deletion controls, and backups.</td></tr>
+              <tr><td><b>Integrations</b></td><td>GCash identity if approved; email/SMS or push; maps/geocoding. Payments remain out of the first production pilot.</td></tr>
+              <tr><td><b>Operations</b></td><td>Admin review queues, feature flags, analytics consent, monitoring, incident response, rate limits, and environment separation.</td></tr>
+            </tbody>
+          </table>
+
+          <h3>Platform requirements</h3>
+          <table class="prd-table requirements-table">
+            <thead><tr><th>ID</th><th>Capability</th><th>Acceptance requirement</th></tr></thead>
+            <tbody>
+              <tr><td>PL-01</td><td>Accounts and roles</td><td>Support renter, host/manager, moderator, and administrator permissions with server-enforced authorization and account recovery.</td></tr>
+              <tr><td>PL-02</td><td>Listings and media</td><td>Persist drafts, versions, verification state, availability, structured costs, occupancy, and optimized media with private evidence storage.</td></tr>
+              <tr><td>PL-03</td><td>Search and matching</td><td>Index approved listings by location and required filters; exclude paused, expired, rejected, or unavailable inventory.</td></tr>
+              <tr><td>PL-04</td><td>Communication</td><td>Persist listing-linked conversations and viewing state; prevent unauthorized thread access; support notification preferences.</td></tr>
+              <tr><td>PL-05</td><td>Trust operations</td><td>Record evidence metadata, reviewer decisions, reports, actions, appeals, and actor/timestamp audit trails.</td></tr>
+              <tr><td>PL-06</td><td>Reliability and privacy</td><td>Encrypt in transit/at rest, minimize personal data, log safely, back up data, rate-limit abuse, and document recovery and deletion procedures.</td></tr>
+            </tbody>
+          </table>
+
+          <h3>CTO decisions required before build</h3>
+          <div class="scope-grid">
+            <div class="scope-card p0"><span>D1</span><b>Architecture</b><p>Framework, API boundary, database, geospatial search, media pipeline, hosting, environments, and deployment ownership.</p></div>
+            <div class="scope-card p1"><span>D2</span><b>Identity and privacy</b><p>Authentication provider, GCash feasibility, fallback KYC, consent, retention, access control, and incident response.</p></div>
+            <div class="scope-card p2"><span>D3</span><b>Marketplace operations</b><p>Verification SLAs, moderation queue, support escalation, notification channels, analytics events, and pilot geography.</p></div>
+          </div>
+          <footer class="page-footer"><span>Platform requirements PL-01 to PL-06</span><span>Page 10</span></footer>
+        </article>
+
         <article class="paper" id="roadmap">
           <header class="page-header"><span>ROOMIE MANILA - PRODUCT REQUIREMENTS</span><span>ROADMAP AND RISKS</span></header>
-          <div class="section-marker">SECTION 09</div>
+          <div class="section-marker">SECTION 10</div>
           <h2>Roadmap and ownership</h2>
           <p class="section-deck">Retire the highest-risk assumptions before adding transaction exposure or marketplace breadth.</p>
 
           <table class="prd-table roadmap-table">
             <thead><tr><th>Stage</th><th>Time</th><th>Outcome</th><th>Owners</th></tr></thead>
             <tbody>
-              <tr><td><b>0. Specify</b></td><td>1-2 weeks</td><td>Trust definitions, listing schema, score policy, moderation, research protocol, instrumentation.</td><td>Product, Design, Trust/Safety, Legal/Privacy</td></tr>
+              <tr><td><b>0. Specify</b></td><td>1-2 weeks</td><td>Trust definitions, listing/data schema, architecture decisions, GCash partner discovery and fallback, moderation, research protocol, instrumentation.</td><td>Product, CTO/Engineering, Design, Trust/Safety, Legal/Privacy</td></tr>
               <tr><td><b>1. Integrate</b></td><td>2-4 weeks</td><td>One MVP2-based tenant flow and one consolidated host flow covering trust to viewing.</td><td>Design, Front-end, Research</td></tr>
               <tr><td><b>2. Validate</b></td><td>2 weeks</td><td>24+ participant study, host tests, accessibility review, safety tabletop, critical retest.</td><td>Research, Product, Trust/Safety</td></tr>
-              <tr><td><b>3. Pilot</b></td><td>6-10 weeks</td><td>Persistent accounts/data, verification operations, moderation, notifications, audit logs, analytics.</td><td>Engineering, Operations, Trust/Safety</td></tr>
+              <tr><td><b>3. Build pilot</b></td><td>6-10 weeks</td><td>Persistent accounts/data, verified listings, search, chat/viewings, moderation, notifications, audit logs, analytics, security and recovery controls.</td><td>CTO/Engineering, Operations, Trust/Safety</td></tr>
               <tr><td><b>4. Transact</b></td><td>After gates</td><td>Documents, payment tracking/receipts, regulated partner assessment, limited pilot.</td><td>Product, Finance/Legal, Engineering</td></tr>
             </tbody>
           </table>
@@ -359,7 +416,7 @@
               <tr><td>Payment and regulatory exposure</td><td><span class="severity high">High</span></td><td>Defer processing; assess licensed partners and obligations before build.</td></tr>
             </tbody>
           </table>
-          <footer class="page-footer"><span>Roadmap and risks</span><span>Page 10</span></footer>
+          <footer class="page-footer"><span>Roadmap and risks</span><span>Page 11</span></footer>
         </article>
 
         <article class="paper" id="appendix">
@@ -375,6 +432,8 @@
               <tr><td>Curated rails remain secondary.</td><td>Users value local discovery, but core decision information remains primary.</td><td>Neighborhood/budget rails in <code>/mvp3/</code>.</td></tr>
               <tr><td>Host operations precede live payments.</td><td>Hosts valued payments, but research recommends trust and communication first.</td><td>Dashboard, listings, inquiries, calendar, and payment concepts across host routes.</td></tr>
               <tr><td>Complete cost, occupancy, and location.</td><td>Requests for roommates, capacity, fees, lease terms, availability, commute, transit, flood/traffic, and daily needs.</td><td>Extend existing listing-detail and map structures rather than replacing them.</td></tr>
+              <tr><td>GCash is a conditional identity path.</td><td>GCash offers partner identity solutions, but access requires approval and onboarding.</td><td>Integrate only through approved partner APIs; retain an equivalent fallback and never collect MPIN or OTP.</td></tr>
+              <tr><td>The pilot requires a real backend.</td><td>The tested prototypes use mock state and do not validate persistence, permissions, moderation, or failure recovery.</td><td>Platform requirements PL-01 to PL-06 define the production boundary.</td></tr>
             </tbody>
           </table>
 
@@ -394,14 +453,16 @@
             <li>Roomie Manila User Testing Readout - August 2026, 15 participants.</li>
             <li>User Test Analysis (Screen Recordings) - qualitative findings.</li>
             <li><code>mvproomie</code> source and captured prototype routes - November 2026.</li>
+            <li><code>bahaytrust</code> market, microhousing, and trust-platform context - November 2026.</li>
+            <li><a href="https://gcash.com/business/partner-solutions/identity-solutions/single-sign-on" target="_blank" rel="noopener">GCash Single Sign-on partner overview</a> and <a href="https://gcash.com/business/api-portal-faqs" target="_blank" rel="noopener">API Portal FAQs</a> - consulted November 2026.</li>
           </ul>
 
           <div class="final-block">
-            <p>Full downloadable specification</p>
-            <h3>Roomie Manila Revised PRD</h3>
-            <a href="./Roomie_Manila_Revised_PRD.pdf" target="_blank" rel="noopener">Open 19-page PDF ↗</a>
+            <p>Prior long-form reference</p>
+            <h3>Roomie Manila Revised PRD (PDF)</h3>
+            <a href="./Roomie_Manila_Revised_PRD.pdf" target="_blank" rel="noopener">Open 19-page reference PDF ↗</a>
           </div>
-          <footer class="page-footer"><span>End of document</span><span>Page 11</span></footer>
+          <footer class="page-footer"><span>End of document</span><span>Page 12</span></footer>
         </article>
       </main>
     </div>
